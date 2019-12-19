@@ -1,44 +1,43 @@
-# Component: popularFoods
+### Component: popularFoods
 
 
-# Api Requests
+## Api Requests
 
-# # Create/POST
-Post a dish photo to the retaurant: 
-/post/images/
+# Create/POST
+> Post a dish photo to the retaurant: 
+> **/post/:restaurantId/images**
 
-Post a review regarding a restaurant:
-/post/reviews/=
+> Post a review regarding a restaurant:
+> **/post/:restaurantId/reviews**
 
-# # Retrieve/GET
-Retrieve all of the popular dishes (images not included) associated with this restaurant. (no logic yet to determine what makes the dish popular, maybe add a boolean?)
-/api/dishes
+# Retrieve/GET
+> Retrieve all of the popular dishes (images not included) associated with this restaurant. (no logic yet to determine what makes the dish popular, maybe add a boolean?)
+> **/api/dishes**
 
-Retrieve the first image that matches this dish Id
-/api/images/thumbnail/:dishId
+> Retrieve the first image that matches this dish Id
+> **/api/:restaurantId/images/thumbnail/:dishId**
 
-Retrieve all the images associated with this dish Id
-/api/images/dish/:dishId
+> Retrieve all the images associated with this dish Id
+> **/api/:restaurantId/images/dish/:dishId**
 
-Retrieve the reviews associated with a dish name along with the users that commented on these reviews (uses a join)
-/api/reviews/dish/:dish
+> Retrieve the reviews associated with a dish name along with the users that commented on these reviews (uses a join)
+> **/api/:restaurantId/reviews/dish/:dish**
 
 
-# # Update/PUT
-To edit your review regarding a dish
-/edit/reviews/:dish
+# Update/PUT
+> To edit your review regarding a dish
+> **/edit/:restaurantId/reviews/:dish**
 
-To replace 
-/edit/images/:dish
+# Delete/DELETE
+> To remove your review regarding a dish
+> **/delete/reviews/:dish** 
 
-# # Delete/DELETE
-To remove your review regarding a dish
-/delete/reviews/:dish
+> To delete and image of a dish
+> **/delete/images/:dish**
 
-To delete and image of a dish
-/delete/images/:dish
-
-# # Current Shape of the Data (as provided in legacy code), Match Backend to provide this data so the client does not break
+- - 
+* * *
+## Current Shape of the Data (as provided in legacy code), Match Backend to provide this data so the client does not break
 
 # Carousel (main component) - These are based on what the client needs, the other data is extra
 Endpoint: /api/dishes
