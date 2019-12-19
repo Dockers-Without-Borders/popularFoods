@@ -31,8 +31,10 @@ class Carousel extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch("http://52.52.88.215/api/dishes");
+    const response = await fetch("http://localhost:3002/api/dishes");
     const data = await response.json();
+
+    console.log('DATA IN MAIN CAROUSEL', data)
 
     this.setState({ dishes: data }, () => {
       this.carouselWrapper.current.addEventListener("scroll", this.debounceScroll);

@@ -3,7 +3,7 @@ const { database, user, password } = require('../config.js');
 
 
 const sequelize = new Sequelize(database, user, password, {
-    host: 'database',
+    host: 'localhost    ',
     dialect: 'mysql',
     logging: false,
 });
