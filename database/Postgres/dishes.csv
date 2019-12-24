@@ -1,0 +1,502 @@
+name,price,restaurant_id,photo_number,review_number
+Yellow Curry,32.8,34,5,12
+Garlic Bread,14.05,80,3,33
+Apple Crumble,42.71,82,5,41
+Yellow Curry,30.55,93,5,20
+Cheese Souffle,26.27,21,3,12
+Cheese Fries,26.02,87,5,16
+Enchiladas,39.17,31,6,39
+Pizza Caprese,37.39,14,6,43
+Macaroni and Cheese,10.34,57,5,42
+Smiley Potatoes,37.09,22,5,3
+Gelato,37.45,90,5,9
+Fortune Cookies,13.15,81,3,1
+Pasta Pesto,29.17,96,2,39
+Mashed Potatoes,17.46,51,6,12
+Potato Chips,35.34,10,3,25
+Yakitori (焼き鳥),25.73,68,4,2
+Salmon,13.08,86,5,26
+Chocolate Chip Cookies,13.49,82,6,11
+Thai Red Curry,18.78,4,2,47
+Waffles,19.69,100,2,15
+Spaghetti Alla Carbonara,35.75,84,5,13
+Curly Fries,35.63,99,5,28
+Roast Potatoes,11.59,69,3,14
+Ramen,14.91,64,2,26
+Poutine,46.62,18,5,22
+Potato Salad,35.49,23,6,36
+Eggplant Parmesan,34.87,51,2,17
+Molten Chocolate Cake,42.35,83,3,7
+Naan,9.48,4,5,49
+Fries,12.24,66,4,21
+Chicken Breast,14.06,32,6,29
+Egg Fried Rice,13.27,13,4,10
+Raspberry Pie,21.18,58,2,15
+Cheeseburger,45.26,87,6,37
+Poutine,17.4,41,6,30
+Ravioli,29.08,9,5,43
+"Fried Noodles, Pad Thai",9.77,93,3,2
+Chicken Parmigana,17.18,43,6,49
+Hamburger,42.77,63,2,47
+Apple Crumble,24.47,20,5,32
+Eggplant Parmesan,17.79,13,3,23
+Quesadillas,15.52,15,6,18
+Potato Chips,39.04,65,6,35
+Linguine With Clam Sauce,29.87,46,3,6
+Fried Chicken,11.87,45,6,11
+Sausages,34.9,21,5,10
+Potatoes Au Gratin,41.55,96,3,36
+Cupcakes,12.93,11,5,31
+Sorbet,22.14,88,3,28
+Yellow Curry,12.02,42,3,47
+Pancakes,37.22,1,6,46
+Poutine,35.06,94,4,43
+Rice,45.07,7,2,6
+Egg Fried Rice,44.97,99,3,9
+Home Fries,15.49,9,5,47
+Japanese Curry,36.29,70,4,42
+Marinara,29.98,28,2,3
+Baked Ziti,35.11,80,2,13
+Gyoza,13.58,66,6,40
+Waffles,33.07,74,2,15
+Fried Eggs,18.62,5,3,13
+Pork Chops,41.63,8,3,24
+Raspberry Pie,7.94,87,3,34
+Chicken Parmigana,18.18,60,6,29
+Fried Eggs,31.11,73,4,27
+Enchiladas Verdes,27.02,17,3,34
+Molten Chocolate Cake,31.12,62,5,42
+Mochi,44.49,77,4,24
+Enchiladas,43.33,97,4,12
+Burrito,34.01,22,4,47
+Gyoza,16.21,90,5,47
+Pepperoni Pizza,26.6,87,4,22
+Mochi,13.63,20,6,48
+Sweet Potato Fries,24.86,18,5,30
+Clafoutis,29.06,3,5,18
+Yellow Curry,14.18,29,2,34
+Salmon,16.32,8,3,31
+Curry,17.28,67,4,22
+Gyoza,27.09,44,6,3
+Pasta Salad,11,65,3,19
+Chicken Breast,27.03,28,2,38
+Gelato,8.52,56,5,21
+Kebabs,7.82,33,2,44
+Chicken Parmigana,23.28,5,6,8
+Mochi,27.76,52,2,45
+Tarka Daal,30.63,4,4,17
+Waffles,27.65,38,4,27
+Sorbet,8.74,81,4,33
+Cheeseburger,13.23,83,5,34
+Rice,23.61,57,5,22
+Tiramisu,36.44,74,3,48
+Chocolate Fondue,46.88,24,4,16
+Kebab,11.33,87,6,0
+Fried Eggs,31.28,83,2,22
+"Pound Cake, Nutella",31.12,62,3,18
+Macaroni and Cheese,23.88,99,5,34
+Pasta Salad,45.01,69,4,24
+Noodles,10.2,3,2,46
+Pancakes,32.18,17,4,12
+Potato Salad,17.25,10,3,33
+Chicken Breast,37.05,1,4,43
+Ramen,23.64,64,4,16
+Yellow Curry,36.18,20,4,45
+Haddock,23.43,74,2,44
+Marinara,46.23,68,3,46
+Risotto,41.41,45,5,21
+Ramen,10.44,13,4,46
+Rice,11.6,39,2,7
+Steak,19.33,53,2,40
+Pork Chops,39.01,65,3,48
+Spaghetti Aglio E Olio,46.15,16,6,44
+Macaroni and Cheese,11.64,47,6,44
+Omelette,23.51,43,3,44
+Tiramisu,30.92,58,6,36
+Sushi,35.41,49,2,49
+Yellow Curry,33.84,33,5,42
+Pork Chops,19.07,28,4,5
+Kebab,43.87,31,4,34
+Fajitas,42.51,80,6,4
+Eggplant Parmesan,26.69,62,3,44
+Pasta Salad,20.45,67,2,17
+Spaghetti Aglio E Olio,37.29,100,5,27
+Grilled Cheese,34.4,98,5,2
+Roast Potatoes,24.75,55,3,4
+Fried Eggs,35.22,76,5,17
+Linguine With Clam Sauce,40.36,9,5,22
+Chorizo Pizza,19.34,55,4,21
+Cheese Souffle,35.28,99,6,10
+Quesadillas,17.81,16,5,0
+Japanese Curry,38.36,47,2,33
+Kebabs,42.39,13,5,30
+Ramen,13.43,29,2,28
+Tacos,40.87,16,5,3
+Sandwich,36.37,17,6,41
+Risotto,35.98,28,5,21
+Haddock,7.29,11,3,26
+Yellow Curry,43.95,68,3,23
+Egg Fried Rice,13.58,16,5,48
+Sandwich,25.79,91,2,30
+Smiley Potatoes,37.37,60,5,15
+Omelette,8.39,20,5,14
+Smiley Potatoes,17.55,61,2,12
+Japanese Curry,42.96,94,6,23
+Thai Green Curry,16.42,93,4,47
+Yakitori (焼き鳥),45.67,53,6,23
+Grilled Cheese,10.19,58,6,37
+Macarons,37.51,53,6,1
+Chicken Korma,40.48,93,4,44
+Hamburger,31.03,43,2,47
+Barbecue Ribs,41.57,81,5,34
+Pasta Pesto,16.34,33,3,18
+Curly Fries,23.37,34,2,8
+Fries,41.75,72,2,27
+Yakitori (焼き鳥),35.02,12,3,45
+Hamburger,44.16,86,2,10
+Fries,24.35,20,2,49
+Tempura (天ぷら),43.37,28,5,33
+Sorbet,32.04,97,5,39
+Yellow Curry,40.51,72,6,8
+Spaghetti Alla Carbonara,14.62,13,5,29
+Baked Ziti,11.96,69,5,20
+Yellow Curry,23.09,79,3,48
+Chicken Korma,27.75,29,2,5
+Sausages,28.32,94,5,49
+Fish Burger,26.92,53,2,14
+Raspberry Pie,32.65,50,6,49
+"Pound Cake, Nutella",42.7,80,3,26
+Macaroni and Cheese,8.66,45,3,24
+Enchiladas,34.2,15,4,10
+Pasta Pesto,37.38,6,5,23
+Garlic Bread,17.23,71,2,44
+Marinara,34.01,63,4,27
+Chocolate Souffle,18.64,90,2,11
+Fajitas,31.11,69,3,40
+Tacos,26.11,7,5,17
+Spaghetti Alla Carbonara,38.25,86,3,20
+Chicken Burger,27.85,40,4,9
+Cupcakes,8.3,96,5,28
+Kebabs,30.03,69,5,16
+Pizza Caprese,35.37,59,5,47
+Tacos,15.67,61,2,35
+Yellow Curry,22.49,13,3,5
+Cheeseburger,37.34,91,2,35
+"Fried Noodles, Pad Thai",39.97,79,5,39
+Burrito,16.71,47,6,36
+Gelato,22.74,8,2,24
+Pork Chops,9.16,23,2,17
+Garlic Bread,34.8,31,2,47
+Chocolate Souffle,44.49,4,2,21
+Pasta Pesto,19.44,26,2,37
+Fried Eggs,11.68,93,4,32
+Spaghetti Bolognese,45.06,2,6,37
+Spaghetti Aglio E Olio,41.23,89,4,1
+Lasagna,29.85,29,3,27
+Chocolate Fondue,43.38,70,4,41
+Tiramisu,40.64,55,6,43
+Hot Dog,28.37,31,6,8
+Pepperoni Pizza,37.8,19,6,43
+Fajitas,45.51,31,6,2
+Potato Salad,31.48,71,2,26
+Gyoza,9.49,80,3,0
+Sashimi,15.07,22,5,18
+Cheese Souffle,11.72,14,5,40
+Mashed Potatoes,35.38,12,6,34
+Chorizo Pizza,21.69,34,6,25
+Spaghetti Aglio E Olio,7.28,29,3,49
+Fortune Cookies,27.25,40,3,30
+Barbecue Ribs,32.92,78,4,44
+Chicken Tikka Masala,37.32,27,4,33
+Kebabs,10.47,75,5,41
+Chorizo Pizza,38.97,30,3,40
+Apple Crumble,31.36,67,6,14
+Fried Eggs,37.21,66,2,20
+Salmon,42.18,20,4,1
+Barbecue Ribs,40.48,72,2,9
+Hard Boiled Eggs,8.04,21,6,9
+Garlic Bread,15.04,84,3,43
+Kebabs,15,83,4,7
+Macaroni and Cheese,32.67,34,2,17
+Spaghetti Bolognese,38.5,64,4,32
+Pasta Salad,25.42,29,3,29
+Molten Chocolate Cake,13.83,3,6,17
+Fortune Cookies,18.87,7,6,20
+Tacos,23.76,59,6,13
+Enchiladas Verdes,34.56,61,5,44
+Spaghetti Bolognese,26.2,82,3,41
+Baked Potatoes,36.31,10,5,21
+Pepperoni Pizza,40.1,51,2,2
+Smiley Potatoes,25.37,77,2,17
+Chicken Korma,40.87,7,2,39
+Linguine With Clam Sauce,40.24,56,3,15
+Yellow Curry,37.64,26,6,35
+Kebab,35.91,21,5,18
+Fries,28.49,78,5,13
+Haddock,32.31,8,2,34
+Grilled Cheese,12.24,87,5,40
+Molten Chocolate Cake,29.74,78,5,38
+Pasta Salad,20.23,50,5,35
+Steak,26.96,78,4,2
+Roast Potatoes,9.08,29,6,4
+Chili Con Carne,17.9,85,2,46
+Smiley Potatoes,36.16,5,5,0
+Quesadillas,26.65,23,3,48
+Four Cheese Pizza,41.26,93,2,17
+Chicken Parmigana,10.57,31,2,15
+Curry,15.86,61,6,22
+Macaroni and Cheese,21,99,2,10
+Home Fries,14.95,76,4,44
+Cupcakes,40.28,92,4,40
+Potatoes Au Gratin,38.38,2,4,19
+Sorbet,32.28,78,2,8
+Hot Dog,16.66,8,5,7
+Omelette,20.82,76,4,46
+Quesadillas,34.39,89,6,49
+Spaghetti Alla Carbonara,45.03,89,6,31
+Fries,44.18,18,5,48
+Margherita Pizza,46.66,71,6,38
+Waffles,30.12,11,6,8
+Chicken Tikka Masala,42.1,98,2,4
+Thai Green Curry,13.2,71,3,46
+Peking Duck,43.32,7,3,8
+Chicken Korma,11.93,87,6,40
+"Fried Noodles, Pad Thai",29.59,61,6,43
+Cheeseburger,21.36,35,2,28
+Haddock,18.21,56,2,34
+"Fried Noodles, Pad Thai",45.12,25,4,2
+Potato Chips,41.83,23,4,42
+Ramen,17.36,48,5,47
+Spaghetti Alla Carbonara,7.86,90,4,26
+Spaghetti Aglio E Olio,26.77,10,5,14
+"Fried Noodles, Pad Thai",40.48,94,4,6
+Clafoutis,23.49,94,5,20
+Chocolate Chip Cookies,31.62,88,4,45
+Mashed Potatoes,19.24,3,3,15
+Gyoza,15.57,7,6,38
+Pork Chops,12.96,11,6,20
+Garlic Bread,37.52,3,3,0
+Fortune Cookies,8.28,3,3,26
+Spaghetti Bolognese,41.36,83,6,43
+Hot Dog,46.4,21,6,42
+Marinara,31.01,86,6,19
+Rice,19.74,2,2,2
+Haddock,33.05,81,4,18
+Baked Ziti,28.13,83,4,30
+Waffles,7.94,32,3,11
+Baked Ziti,22.83,18,2,47
+Chicken Burger,20.86,93,5,25
+Tiramisu,9.47,89,6,39
+Tarka Daal,25.54,30,3,37
+Hamburger,42.24,42,2,15
+Pizza Caprese,39.73,2,6,10
+Potato Chips,8.36,53,4,11
+Chicken Breast,20.11,67,5,44
+Tiramisu,24.31,92,5,49
+Poutine,44.49,43,4,7
+Pasta Salad,27.31,70,4,33
+,42.05,5,2,49
+Cheese Souffle,33.18,21,5,33
+Mashed Potatoes,41.66,52,4,28
+Tamagoyaki,33.89,50,2,2
+Tempura (天ぷら),30.3,71,3,2
+Cheese Souffle,20.43,35,3,29
+Sorbet,24.51,41,6,3
+Chocolate Chip Cookies,38.22,50,3,19
+Chicken Breast,31.73,75,2,17
+Baked Potatoes,33.22,99,5,22
+Potato Salad,32.64,44,6,7
+Waffle Fries,44.11,70,2,48
+Tiramisu,19.5,73,4,16
+Lasagna,9.84,50,3,27
+Ice Cream,41.5,26,3,12
+Sashimi,13.99,86,6,26
+Sandwich,15.78,77,2,38
+Omelette,33.06,92,2,22
+Sausages,30.46,3,3,21
+Peking Duck,12.64,11,3,45
+Ice Cream,24.73,16,2,41
+Sausages,19.45,74,4,17
+Thai Green Curry,23.28,41,5,28
+Marinara,19.08,9,4,1
+Potato Chips,9.16,26,6,1
+Steak,39.02,26,6,33
+Baked Potatoes,26.71,39,5,48
+Gelato,45.74,11,2,27
+Sorbet,46.69,57,6,37
+Thai Green Curry,38.75,91,2,33
+Peking Duck,38.79,2,6,36
+Tarka Daal,18.6,62,4,45
+Chocolate Chip Cookies,43.14,6,5,12
+Haddock,30.22,64,5,34
+Macarons,35.77,41,5,5
+Mochi,23.93,57,2,12
+Sashimi,8.29,11,2,13
+Mashed Potatoes,33.29,66,5,1
+Marinara,35.99,51,3,38
+Chicken Burger,44.84,65,2,33
+Potato Salad,13.92,90,2,35
+Enchiladas,44.13,47,3,35
+Gelato,27.13,4,4,46
+Poutine,9.77,28,4,31
+Tarka Daal,40.46,51,3,19
+Kebab,44.45,20,6,10
+Marinara,9.52,41,6,37
+Enchiladas Verdes,36.25,73,2,25
+Waffles,7.06,24,6,31
+Grilled Cheese,11,97,5,45
+Sushi,10.75,76,5,18
+Molten Chocolate Cake,7.28,96,2,37
+Sandwich,7.37,38,6,26
+Baked Ziti,18.96,26,3,32
+Chicken Korma,9.76,66,2,48
+Cheeseburger,33.4,99,3,4
+Fries,44.38,30,6,44
+Sushi,17.1,67,2,21
+Ravioli,13.27,50,4,24
+Peking Duck,42.23,4,4,7
+Rice,23.91,94,3,18
+Waffle Fries,30.13,16,5,4
+Noodles,37.65,28,2,0
+Hard Boiled Eggs,41.47,36,4,34
+"Pound Cake, Nutella",35.6,58,5,32
+Chicken Parmigana,34.54,58,4,24
+Apple Crumble,25.9,63,2,44
+Rice,23.34,87,6,45
+Barbecue Ribs,20.15,49,4,8
+Tamagoyaki,38.06,49,2,30
+Roast Potatoes,20.72,6,2,21
+Tempura (天ぷら),11.72,1,2,37
+Chorizo Pizza,28.81,9,6,33
+Haddock,13.61,76,3,37
+Spaghetti Aglio E Olio,10.86,20,4,25
+Tortilla,16.95,10,6,29
+Ramen,15.66,56,6,5
+Chicken Korma,7.35,77,2,20
+Garlic Bread,21.69,48,3,18
+Potato Chips,24.63,2,5,10
+Fajitas,9.25,96,3,37
+Smiley Potatoes,16.33,97,3,4
+Spaghetti Aglio E Olio,23.45,67,5,17
+Fortune Cookies,32.78,15,6,39
+Spaghetti Bolognese,29.59,99,3,46
+Ravioli,7.96,10,2,21
+Sushi,22.12,60,6,26
+Potato Salad,36.4,11,3,25
+Margherita Pizza,12.5,29,3,22
+Chicken Parmigana,38.36,37,6,19
+Haddock,7.33,34,6,5
+Strawberry Pie,11.26,53,6,32
+Yakitori (焼き鳥),43.04,28,4,33
+Ice Cream,41.1,78,6,25
+Tempura (天ぷら),42.12,96,6,8
+Mochi,19.66,94,5,41
+Yellow Curry,22.15,94,6,48
+Egg Fried Rice,43.63,67,3,41
+Ice Cream,28.04,37,5,22
+Pizza Caprese,14.98,28,3,24
+Salmon,24.97,20,3,40
+Waffle Fries,13.66,21,4,24
+Fish Burger,25.19,83,6,35
+Raspberry Pie,37.33,55,3,8
+Margherita Pizza,35.32,92,3,45
+Roast Potatoes,31.63,53,5,22
+Thai Green Curry,40.06,25,6,15
+Fish and Chips,25.7,99,2,8
+Fajitas,26.61,100,5,7
+Peking Duck,41.26,59,4,9
+Chili Con Carne,18.44,68,6,37
+Pepperoni Pizza,42.02,1,4,12
+Fajitas,46.29,23,3,25
+Waffles,40.32,21,5,3
+Home Fries,25.43,36,5,18
+Curly Fries,33.53,60,2,41
+Chocolate Fondue,38.58,46,4,40
+Noodles,33.58,40,4,40
+Grilled Cheese,20.33,28,4,49
+Fortune Cookies,46.2,21,2,36
+Fried Eggs,35.3,83,2,0
+Fish Burger,46.58,12,5,7
+Nem,36.93,50,3,16
+Linguine With Clam Sauce,7.04,52,4,25
+Linguine With Clam Sauce,26.91,23,6,28
+Tamagoyaki,44.35,12,6,9
+Thai Red Curry,19.24,72,6,39
+Potato Salad,20.65,46,4,26
+Baked Potatoes,32.44,91,5,10
+Potato Chips,24.66,16,2,8
+Thai Red Curry,11.99,2,5,27
+Smiley Potatoes,32.34,10,5,15
+Linguine With Clam Sauce,28,43,5,41
+Enchiladas,26.65,82,3,12
+Pizza Caprese,35.29,40,2,26
+Salmon,46.58,66,2,48
+Four Cheese Pizza,17.43,21,4,49
+Mashed Potatoes,41.79,61,5,21
+Baked Ziti,8.99,78,6,2
+Garlic Bread,32.3,59,2,24
+Potato Chips,16.77,7,2,41
+Pepperoni Pizza,37.33,17,3,13
+Chicken Burger,45.2,59,2,9
+Sandwich,14.67,62,5,2
+Salmon,41.23,87,2,20
+Margherita Pizza,11.12,66,3,22
+Ravioli,24.41,10,3,9
+Chocolate Fondue,9.23,37,6,38
+Haddock,10.09,86,5,29
+Chicken Korma,39.61,41,6,42
+Baked Ziti,46.73,51,2,49
+Ice Cream,18.19,82,6,46
+Thai Red Curry,33.16,32,5,12
+Fajitas,40.42,36,2,25
+Tortilla,34.47,20,5,16
+Apple Crumble,14.9,25,5,2
+Spaghetti Bolognese,43.4,10,2,18
+Chicken Korma,26.79,79,4,15
+Spaghetti Aglio E Olio,40.47,7,2,6
+Fries,28.14,3,4,18
+Thai Red Curry,29.03,75,2,9
+Salmon,10.93,13,6,40
+Rice,28.65,36,4,49
+Cheeseburger,34.15,83,5,29
+Fish Burger,17.02,19,5,13
+Chicken Burger,27.49,58,6,37
+Baked Ziti,35.76,21,6,24
+Cheeseburger,24.97,16,3,22
+Tempura (天ぷら),30.08,18,3,38
+Cupcakes,20.07,3,4,0
+Fried Chicken,14.67,74,5,27
+Baked Potatoes,39.51,29,3,8
+Margherita Pizza,15.21,63,5,11
+Kebab,12.44,54,5,21
+Pancakes,45.31,94,5,34
+Chili Con Carne,33.25,10,3,34
+Lasagna,33.22,60,6,1
+Four Cheese Pizza,12.84,44,2,38
+Yakitori (焼き鳥),44.51,23,2,16
+Fortune Cookies,16.54,92,5,23
+Chili Con Carne,30.39,68,5,1
+Chorizo Pizza,40.38,12,5,36
+Tempura (天ぷら),41.36,93,5,19
+Sashimi,35.04,43,5,24
+Steak,18.82,15,4,47
+Rice,46.82,34,3,28
+Fish Burger,39,10,6,7
+Garlic Bread,10.99,68,4,2
+Hot Dog,31.62,44,5,15
+Egg Fried Rice,16.23,3,5,27
+Chicken Parmigana,34.03,20,3,45
+Baked Potatoes,20.09,69,4,21
+,11.49,66,2,43
+"Pound Cake, Nutella",36.08,4,5,37
+Cheeseburger,37.07,87,5,11
+Tiramisu,16.86,87,3,14
+Ice Cream,42.21,31,2,13
+Marinara,11.32,15,6,4
+Barbecue Ribs,26.03,7,5,23
+Chicken Burger,25.11,67,4,40
+Raspberry Pie,33.39,7,3,49
+Baked Ziti,16.59,66,2,42
+Grilled Cheese,37.82,51,4,10
+Noodles,20.67,77,4,28
+Pancakes,16.73,21,2,27

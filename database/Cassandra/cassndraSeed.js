@@ -15,3 +15,8 @@
 
 // to import in schema
 // source './cassandra.cql'
+
+
+
+// what are the chances that there will be a restaurant with the same name and same dish
+// cus thats how im partioning things

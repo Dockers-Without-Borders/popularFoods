@@ -18,17 +18,17 @@ CREATE TABLE restaurants (
 CREATE TABLE users (
     id serial PRIMARY KEY,
     name varchar(80),
-    avatarURL varchar NOT NULL,
-    friendsNumber INTEGER DEFAULT 0,
-    reviewsNumber INTEGER DEFAULT 0
+    avatar_url varchar NOT NULL,
+    friends_number INTEGER DEFAULT 0,
+    reviews_number INTEGER DEFAULT 0
 );
 
 -- (5xRestaurants) 50 Mil
 CREATE TABLE dishes (
     id serial PRIMARY KEY,
-    name varchar(80),
-    price INTEGER NOT NULL,
-    restaurant_id INTEGER NOT NULL,
+    name varchar,
+    price DECIMAL,
+    restaurant_id INTEGER,
     photo_number INTEGER,
     review_number INTEGER,
     FOREIGN KEY (restaurant_id) REFERENCES restaurants (id)
@@ -41,10 +41,9 @@ CREATE TABLE reviews (
     stars INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
     dish_id INTEGER NOT NULL,
-    -- may not necesarrily want to have the current time since reviews aren't posted when they are seeded
-    createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at VARCHAR, -- format of time from faker does not match of this
     helpful INTEGER DEFAULT 0,
-    notHelpful INTEGER DEFAULT 0,
+    not_helpful INTEGER DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (dish_id) REFERENCES dishes (id)
 );

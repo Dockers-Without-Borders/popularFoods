@@ -50,9 +50,9 @@ module.exports = {
         }
         const newUserEntry = {
             name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-            avatarURL: `https://randomuser.me/api/portraits/thumb/${userGender}/${userNumber}.jpg`,
-            friendsNumber: Math.floor(Math.random() * 101),
-            reviewsNumber: Math.floor(Math.random() * 101)
+            avatar_url: `https://randomuser.me/api/portraits/thumb/${userGender}/${userNumber}.jpg`,
+            friends_number: Math.floor(Math.random() * 101),
+            reviews_number: Math.floor(Math.random() * 101)
         }
         return newUserEntry;
     },
@@ -60,31 +60,32 @@ module.exports = {
         const newReviewEntry = {
             body: faker.lorem.paragraph(),
             stars: Math.floor((Math.random() * 5) + 1),
-            userId: Math.floor((Math.random() * 50) + 1),
-            dishId: Math.floor((Math.random() * 10) + 1),
-            // this says fake, not sure how fake works
-            createdAt: faker.date.between('2000-01-01', '2019-12-31'),
+            user_id: Math.floor((Math.random() * 50) + 1),
+            dish_id: Math.floor((Math.random() * 10) + 1),
+            created_at: faker.date.between('2000-01-01', '2019-12-31'), // this is good but i may have to save it as a string
             helpful: Math.floor(Math.random()*20),
-            notHelpful: Math.floor(Math.random()*8)
+            not_helpful: Math.floor(Math.random()*8)
         }
         return newReviewEntry;
     },
     makeDishEntry: function () {
-        let name = Math.floor((Math.random() * 110) + 1);
+        // select from one of the 110 foodNames
+        // how will i make the foreign keys like 5 per restaurant??
+        let name = foodNames[Math.floor((Math.random() * 108) + 1)];
         const newDishEntry = {
             name: name,
-            price: Math.floor(Math.random() * 40 + 7) + Math.random(),
+            price: (Math.floor((Math.floor(Math.random() * 40 + 7) + Math.random()) * 100)) / 100 ,
             restaurant_id: Math.floor(Math.random() * 100 + 1),
-            photo_number: Math.floor(Math.random() * 5 + 2),
-            review_number: Math.floor(Math.random() * 50)
+            photo_number: Math.floor(Math.random() * 5 + 2), // what is this again? is is supposed to have as many photos as this number?
+            review_number: Math.floor(Math.random() * 50) // what is this again? is it supposed to have this many reviews? cus I am keeping it consistent
         }
         return newDishEntry;
     },
     makeImageEntry: function () {
         const newImageEntry = {
-            source: foodImages[Math.floor(Math.random() * 21)],
+            source: foodImages[Math.floor(Math.random() * 20)],
             caption: faker.lorem.sentence(word_count = 4),
-            dishId: Math.floor((Math.random() * 10) + 1)
+            dish_id: Math.floor((Math.random() * 10) + 1)
         }
         return newImageEntry;
     },
