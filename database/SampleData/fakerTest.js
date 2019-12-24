@@ -1,3 +1,6 @@
+// This file is just here becuase I wanted to see what faker would output
+// so delete when done
+
 const faker = require('faker');
 
 const foodImages = [

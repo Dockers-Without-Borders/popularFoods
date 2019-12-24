@@ -1,7 +1,5 @@
-const { Pool } = require('pg');
 const faker = require('faker');
 
-// raw data needed for seeding
 const foodImages = [
     "https://food-photos-yelp.s3-us-west-1.amazonaws.com/tuna.jpg",
     "https://food-photos-yelp.s3-us-west-1.amazonaws.com/10_JiroSushi_TooMuchFOMO_8162076064_7198734377_o_2.jpg",
@@ -41,7 +39,7 @@ const foodNames = [ 'Apple Pie', 'Apple Crumble', 'Macaroni and Cheese', 'Chicke
 'Smiley Potatoes', 'Macarons', 'Barbecue Ribs'
 ]
 
-const dataGenerators = {
+module.exports = {
     makeUserEntry: function () {
         let userNumber = Math.floor(Math.random() * 100);
         let userGender;
@@ -97,106 +95,3 @@ const dataGenerators = {
         return newRestaurant;
     }
 }
-
-
-// seeding script
-var pool = new Pool({
-    database: 'test',
-}) 
-
-// CSV style
-
-//fs write to make CSV file
-// csv-write 3rd library
-
-
-
-
-
-
-
-
-
-
-//restaurants
-let queryStringRestaurant = `insert into restaurants (id, name) values `
-let queryStringUsers = `insert into users (id, name, avatarURL, friendsNumber, reviewsNumber) values `
-let queryStringDishes = `insert into dishes (id, name, price, restaurant_id, photo_number, review_number) values `
-
-// FLAW with this is that it makes 10M copies of each, whereas  i need to make various multiples of that
-for (var i = 0; i < 45 +1 ; i++) {
-    if (i%1000 === 0) { 
-        console.log('SEEDING LISTING:', i);
-    }            
-
-    //restaurants
-    let restaurant = dataGenerators.makeRestaurantEntry();
-    queryStringRestaurant += `(${i}, '${restaurant.name}'), `
-
-    //users
-    let user = dataGenerators.makeUserEntry();
-    queryStringUsers += `(${i}, '${user.name}', '${user.avatarURL}', '${user.friendsNumber}', '${user.reviewsNumber}'), `
-    
-    //dishes
-    let dishes = dataGenerators.makeDishEntry();
-    queryStringDishes += `(${i}, '${dishes.name}', ${dishes.price}, ${dishes.restaurant_id}, ${dishes.photo_number}, ${dishes.review_number}), `
-
-    //reviews
-
-    //images
-}
-
-//restaurants
-queryStringRestaurant = queryStringRestaurant.slice(0, queryStringRestaurant.length-2);
-queryStringRestaurant += `;`
-
-pool.query(queryStringRestaurant, (err, res) => {
-    if (err) {
-        console.log(err.stack)
-      } else {
-        console.log('success')
-      }
-})
-
-//users
-queryStringUsers = queryStringUsers.slice(0, queryStringUsers.length-2);
-queryStringUsers += `;`
-
-console.log(queryStringUsers);
-
-pool.query(queryStringUsers, (err, res) => {
-    if (err) {
-        console.log(err.stack)
-      } else {
-        console.log('success')
-      }
-})
-
-//dishes
-queryStringDishes = queryStringDishes.slice(0, queryStringDishes.length-2);
-queryStringDishes += `;`
-
-console.log(queryStringDishes);
-
-pool.query(queryStringDishes, (err, res) => {
-    if (err) {
-        console.log(err.stack)
-      } else {
-        console.log('success')
-      }
-})
-
-
-pool.end();
-
-// pool.query("insert into users (name, avatarurl) values (1, 'pumpkinedd'), (2, 'pieee');", (err, res) => {
-//     if (err) {
-//       console.log(err.stack)
-//     } else {
-//       console.log(res.rows[0])
-//     }
-// })
-
-// learn how to use faker
-// then come up with an algorythm to seed
-// come up with a way to track how much data is being seeded

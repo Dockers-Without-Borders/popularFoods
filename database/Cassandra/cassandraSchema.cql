@@ -1,22 +1,21 @@
-CREATE KEYSPACE IF NOT EXISTS popularDishCass
+CREATE KEYSPACE IF NOT EXISTS   popularDishCass 
  WITH REPLICATION = { 
-      'class' : 'SimpleStrategy', 'replication_factor' : 2 } 
-   }
-   [AND DURABLE_WRITES =  true] ;
+      'class' : 'SimpleStrategy', 'replication_factor' : 2 };
+
+
+-- use keyspace;
+-- select * from populardishcass
 
 CREATE TABLE popularDishCass.carousel (
-    -- partition key?
-
-    -- cluster id ? partition over the retaurant by making it primary key
     restaurantName VARCHAR,
     numberOfPhotos INT,
     numberOfReviews INT,
     price INT,
     thumbnailImage VARCHAR,
     dishName VARCHAR,
-    PRIMARY KEY (restuarantName, dishName)
+    PRIMARY KEY (restaurantName, dishName)
     -- only using one cluter here becasue there is only one dishpicture I need...
-)
+);
 
 CREATE TABLE popularDishCass.modal (
     -- partition over restaurant, or I can have a reference key that restaurant
