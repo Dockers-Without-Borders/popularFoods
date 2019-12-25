@@ -34,8 +34,8 @@ const foodNames = [ 'Apple Pie', 'Apple Crumble', 'Macaroni and Cheese', 'Chicke
 'Margherita Pizza', 'Marinara', 'Pepperoni Pizza', 'Chorizo Pizza', 'Pizza Caprese', 'Tiramisu', 'Panna Cotta', 'Chocolate Souffle',
 'Molten Chocolate Cake', 'Chocolate Fondue', 'Strawberry Pie', 'Raspberry Pie', 'Clafoutis', 'Cheese Souffle', 'Naan', 'Chicken Korma',
 'Chicken Tikka Masala', 'Tarka Daal', 'Garlic Bread', 'Gelato', 'Ice Cream', 'Sorbet', 'Cupcakes', 'Chocolate Chip Cookies',
-'Pound Cake, Nutella', 'Grilled Cheese', 'Pancakes', 'Waffles', 'Pork Chops', 'Sausages', 'Kebabs', 'Kebab', 'Ravioli', 'Eggplant Parmesan',
-'Tortilla', 'Omelette', 'Fried Eggs', 'Hard Boiled Eggs', 'Egg Fried Rice', 'Fried Noodles, Pad Thai', 'Haddock', 'Fortune Cookies', 'Mashed Potatoes',
+'Nutella', 'Pound Cake', 'Grilled Cheese', 'Pancakes', 'Waffles', 'Pork Chops', 'Sausages', 'Kebabs', 'Kebab', 'Ravioli', 'Eggplant Parmesan',
+'Tortilla', 'Omelette', 'Fried Eggs', 'Hard Boiled Eggs', 'Egg Fried Rice', 'Fried Noodles', 'Pad Thai', 'Haddock', 'Fortune Cookies', 'Mashed Potatoes',
 'Smiley Potatoes', 'Macarons', 'Barbecue Ribs'
 ]
 
@@ -71,7 +71,7 @@ module.exports = {
     makeDishEntry: function () {
         // select from one of the 110 foodNames
         // how will i make the foreign keys like 5 per restaurant??
-        let name = foodNames[Math.floor((Math.random() * 108) + 1)];
+        let name = foodNames[Math.floor((Math.random() * foodNames.length) + 1)];
         const newDishEntry = {
             name: name,
             price: (Math.floor((Math.floor(Math.random() * 40 + 7) + Math.random()) * 100)) / 100 ,
@@ -83,7 +83,7 @@ module.exports = {
     },
     makeImageEntry: function () {
         const newImageEntry = {
-            source: foodImages[Math.floor(Math.random() * 20)],
+            source: foodImages[Math.floor(Math.random() * foodImages.length)],
             caption: faker.lorem.sentence(word_count = 4),
             dish_id: Math.floor((Math.random() * 10) + 1)
         }
