@@ -6,15 +6,7 @@ const fs = require('fs');
 
 ////////////////////////////////////////////////// seeding script /////////////////////////////////////////////////////
 
-// https://medium.com/@danielburnsart/writing-a-large-amount-of-data-to-a-csv-file-using-nodes-drain-event-99dcaded99b5
-// Ways to Optimize this: 
-// use waterthreshold method so things do not get over whemled, they drain and then continue doing their thing
-// break up the script by using recusion to do like 1 million at a time
-// need to use one seed script because i want to have certain table seeds be call backs of each other
-// create multiple pools and have them run async?
-// INCREASE the ram to make this process faster
-
-
+var today = new Date();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////// CREATE RESTAURANT CSV /////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,7 +16,7 @@ writeRestaurants.write('id,name,\n', 'utf8')
 
 //drain + write script
 function writeTenMillionRestaurants(writer, encoding, callback) {
-    let i = 10000; // set this to one mill for now
+    const i = 10000000; // set this to one mill for now
     let id = 0;
     function write() {
       let ok = true;
@@ -69,7 +61,7 @@ writeUsers.write('name,avartar_url,friends_number,reviews_number\n', 'utf8')
 
 //drain + write script
 function writeTwentyMillionUsers(writer, encoding, callback) {
-    let i = 20000; //set this to two million for now
+    let i = 20000000;
     let id = 0;
     function write() {
       let ok = true;
@@ -116,7 +108,7 @@ writeDishes.write('name,price,restaurant_id,photo_number,review_number\n', 'utf8
 
 //drain + write script
 function writeFiftyMillionDishes(writer, encoding, callback) {
-    let i = 50000; //set this to five million for now
+    let i = 50000000;
     let id = 0;
     function write() {
       let ok = true;
@@ -127,9 +119,6 @@ function writeFiftyMillionDishes(writer, encoding, callback) {
         // if we want to randomly distribute the foreign key then the data generators have a function for it
         const { name, price, photo_number,review_number} = makeDishEntry();
         const data = `${name},${price},${restaurant_id},${photo_number},${review_number}\n`;
-        // restuarant id will break if there is not atleast 100 entries from retaurants since randomizer is set to 100
-        // issue is still that these are not evenly distributed
-
 
         //Keep track using
         if (i%100000 === 0) {
@@ -167,7 +156,7 @@ writeReviews.write('body,stars,user_id,dish_id,created_at,helpful,not_helpful\n'
 
 //drain + write script
 function writeHundredMillionReviews(writer, encoding, callback) {
-    let i = 100000; //set this to 10 million for now instead of 100
+    let i = 100000000;
     let id = 0;
     function write() {
       let ok = true;
@@ -175,7 +164,7 @@ function writeHundredMillionReviews(writer, encoding, callback) {
         i -= 1;
         id += 1;
         const { body, stars, created_at,helpful,not_helpful} = makeReviewEntry();
-        // since 2 user and 10 reviews per rest. each user must have 5 reviews
+        // since 2 user and 10 reviews per restaurant. each user must have 5 reviews
         const user_id = Math.ceil(id/5)
         const dish_id = Math.ceil(id/2) //two reviews per dish
         const data = `${body},${stars},${user_id},${dish_id},${created_at},${helpful},${not_helpful}\n`;
@@ -188,6 +177,8 @@ function writeHundredMillionReviews(writer, encoding, callback) {
         // if finished then write last point and run callback
         if (i === 0) {
           writer.write(data, encoding, callback);
+          console.log('QUERY TO DB NOW THAT WE ARE DONE MAKING CSVS')
+          queryToDB(); // added it here because reviews is always the alst csv to be made since it has the most content
         } else {
         // see if we should continue, or wait
         // don't pass the callback, because we're not done yet.
@@ -216,7 +207,7 @@ writeImages.write('source,caption,dish_id\n', 'utf8')
 
 //drain + write script
 function writeHundredMillionImages(writer, encoding, callback) {
-    let i = 100000; //set this to 10 million for now instead of 100
+    let i = 100000000; //set this to 10 million for now instead of 100
     let id = 0;
     function write() {
       let ok = true;
@@ -235,9 +226,6 @@ function writeHundredMillionImages(writer, encoding, callback) {
         // if finished then write last point and run callback
         if (i === 0) {
           writer.write(data, encoding, callback);
-          console.log('QUERY TO DB NOW THAT WE ARE DONE MAKING CSVS')
-          // this may be false and not finish querying the last stream of info
-          queryToDB();
         } else {
         // see if we should continue, or wait
         // don't pass the callback, because we're not done yet.
@@ -271,49 +259,44 @@ let queryStringReviews = `COPY reviews (body, stars, user_id, dish_id, created_a
 let queryStringImages = `COPY images (source, caption, dish_id) FROM '/Users/gurjot/popularFoods/database/Postgres/images.csv' DELIMITER ',' CSV HEADER;`
 
 var pool = new Pool({
-    database: 'test',
+    database: 'yelp',
 }) 
 
 pool.query = Promise.promisify(pool.query);
 
-var today = new Date();
-
-//might look better if i promisify all on users and restaurant and the bunch the rest on one then statement
 
 var queryToDB = function() {
     // RESTAURANTS
     pool.query(queryStringRestaurant)
     .then((res)=>{
         console.log('RESTAURANTS QUERY Success')
-        // This was executed before the csv was done writing itself.
-        //USERS
+        //USERS - dependant on restaurants
         pool.query(queryStringUsers)
         .then(() => {
             console.log('Users Query Success')
-            // DISHES
+            // DISHES - dependant on restaurants
             pool.query(queryStringDishes)
             .then(()=>{
                 console.log('DISHES QUERY SUCESS')
 
-                //REVIEWS
-                pool.query(queryStringReviews)
-                .then(() => {
-                    console.log('REVIEWS QUERY SUCESS')
-                })
-                .catch((err) => {
-                    console.log('REVIEWS QUERY FAILED', err.stack)
-                })
-
-                //IMAGES
+                //IMAGES - dependant on dishes
                 pool.query(queryStringImages)
                 .then(()=>{
-                    console.log('IMAGES QUERY SUCESS', (new Date() - today)/1000)
-                    pool.end(); // not sure if it makes sense to end the pool here, and will it interupt any queries?
+                    console.log('IMAGES QUERY SUCESS')
                 })
                 .catch(err => {
                     console.log('IMAGES FAILED TO QUERY', err.stack)
                 })
-        
+                
+                //REVIEWS - dependant on dishes and user
+                pool.query(queryStringReviews)
+                .then(() => {
+                    console.log('REVIEWS QUERY SUCESS. Time from Start of creating csv to querying the data to the DB in seconds:', (new Date() - today)/1000)
+                    pool.end();
+                })
+                .catch((err) => {
+                    console.log('REVIEWS QUERY FAILED', err.stack)
+                })
 
             })
             .catch(err=>{

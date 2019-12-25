@@ -2,3 +2,10 @@ node_modules
 client/dist/bundle.js
 config.js
 coverage
+
+
+database/Postgres/restaurants.csv
+database/Postgres/users.csv
+database/Postgres/reviews.csv
+database/Postgres/images.csv
+database/Postgres/dishes.csv

@@ -12,7 +12,7 @@
     "start:dev": "nodemon ./server.js",
     "start:debug": "nodemon --inspect .   /server.js",
     "postgresSchema": "sudo -u gurjot psql -d postgres -f  /Users/gurjot/popularFoods/database/Postgres/postgresSchema.sql",
-    "seed:postgres": "npm run postgresSchema && node /Users/gurjot/popularFoods/database/Postgres/postgresSeed.js"
+    "seed:postgres": "npm run postgresSchema && node --max-old-space-size=4096 /Users/gurjot/popularFoods/database/Postgres/postgresSeed.js"
   },
   "repository": {
     "type": "git",

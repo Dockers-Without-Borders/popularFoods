@@ -1,10 +1,10 @@
 -- it may be better practice to keep naming scheme consistent, such as
 -- either camelcase or use _ underscores. front end uses mix however?
 
-DROP DATABASE IF EXISTS test;
-CREATE DATABASE test;
+DROP DATABASE IF EXISTS yelp;
+CREATE DATABASE yelp;
 
-\c test
+\c yelp
 
 -- Setting up some of the column names slightly different from what front end expects
 -- adjust one side to make sure its compatible
