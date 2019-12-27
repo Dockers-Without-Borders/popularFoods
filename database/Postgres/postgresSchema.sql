@@ -17,7 +17,7 @@ CREATE TABLE restaurants (
 -- 20 Mil
 CREATE TABLE users (
     id serial PRIMARY KEY,
-    name varchar(80),
+    name varchar,
     avatar_url varchar NOT NULL,
     friends_number INTEGER DEFAULT 0,
     reviews_number INTEGER DEFAULT 0
@@ -42,8 +42,8 @@ CREATE TABLE reviews (
     user_id INTEGER NOT NULL,
     dish_id INTEGER NOT NULL,
     created_at VARCHAR, -- format of time from faker does not match of this
-    helpful INTEGER DEFAULT 0,
-    not_helpful INTEGER DEFAULT 0,
+    -- helpful INTEGER DEFAULT 0, -- maybe delete these
+    -- not_helpful INTEGER DEFAULT 0, -- maybe delete these
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (dish_id) REFERENCES dishes (id)
 );

@@ -1,27 +1,30 @@
 const faker = require('faker');
 
 const foodImages = [
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/tuna.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/10_JiroSushi_TooMuchFOMO_8162076064_7198734377_o_2.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/Shrimp_sushi.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/jiro-dreams-of-sushi-food-porn-thumb.0.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/tumblr_mazpatl0My1qzfo9go1_500.png",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/1472707651.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/sukiyabashi-jiro-roppongi.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/photo_04.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/images.jpeg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/LXQjNbk.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/tumblr_mazpatl0My1qzfo9go1_500.png",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/jiro-sushi.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/1472707651.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/8162045693_1ee8cf2069_z.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/images.jpeg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/sukiyabashi-jiro-roppongi.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/10_JiroSushi_TooMuchFOMO_8162076064_7198734377_o_2.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/b0c4069330976ec61902be1c7fc40e34.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/jiro1.jpg",
-    "https://food-photos-yelp.s3-us-west-1.amazonaws.com/fixedw_large_4x.jpg"
+    "tuna.jpg",
+    "10_JiroSushi_TooMuchFOMO_8162076064_7198734377_o_2.jpg",
+    "Shrimp_sushi.jpg",
+    "jiro-dreams-of-sushi-food-porn-thumb.0.jpg",
+    "tumblr_mazpatl0My1qzfo9go1_500.png",
+    "1472707651.jpg",
+    "sukiyabashi-jiro-roppongi.jpg",
+    "photo_04.jpg",
+    "images.jpeg",
+    "LXQjNbk.jpg",
+    "tumblr_mazpatl0My1qzfo9go1_500.png",
+    "jiro-sushi.jpg",
+    "1472707651.jpg",
+    "8162045693_1ee8cf2069_z.jpg",
+    "images.jpeg",
+    "sukiyabashi-jiro-roppongi.jpg",
+    "10_JiroSushi_TooMuchFOMO_8162076064_7198734377_o_2.jpg",
+    "b0c4069330976ec61902be1c7fc40e34.jpg",
+    "jiro1.jpg",
+    "fixedw_large_4x.jpg"
 ]
+
+// food Images template
+// "https://food-photos-yelp.s3-us-west-1.amazonaws.com/{add end point here}
 
 const foodNames = [ 'Apple Pie', 'Apple Crumble', 'Macaroni and Cheese', 'Chicken Breast', 'Fried Chicken',
 'Chili Con Carne', 'Enchiladas', 'Enchiladas Verdes', 'Fajitas', 'Burrito', 'Tacos', 'Quesadillas', 'Steak', 'Hamburger',
@@ -58,33 +61,31 @@ module.exports = {
     },
     makeReviewEntry: function () {
         const newReviewEntry = {
-            body: faker.lorem.paragraph(),
+            body: faker.lorem.words(), // shortened from paragraph to words
             stars: Math.floor((Math.random() * 5) + 1),
             user_id: Math.floor((Math.random() * 50) + 1),
             dish_id: Math.floor((Math.random() * 10) + 1),
             created_at: faker.date.between('2000-01-01', '2019-12-31'), // this is good but i may have to save it as a string
-            helpful: Math.floor(Math.random()*20),
-            not_helpful: Math.floor(Math.random()*8)
+            // helpful: Math.floor(Math.random()*20), // not enough space on mac
+            // not_helpful: Math.floor(Math.random()*8)
         }
         return newReviewEntry;
     },
     makeDishEntry: function () {
-        // select from one of the 110 foodNames
-        // how will i make the foreign keys like 5 per restaurant??
         let name = foodNames[Math.floor((Math.random() * foodNames.length) + 1)];
         const newDishEntry = {
             name: name,
             price: (Math.floor((Math.floor(Math.random() * 40 + 7) + Math.random()) * 100)) / 100 ,
             restaurant_id: Math.floor(Math.random() * 100 + 1),
-            photo_number: Math.floor(Math.random() * 5 + 2), // what is this again? is is supposed to have as many photos as this number?
-            review_number: Math.floor(Math.random() * 50) // what is this again? is it supposed to have this many reviews? cus I am keeping it consistent
+            photo_number: Math.floor(Math.random() * 5 + 2), 
+            review_number: Math.floor(Math.random() * 50)
         }
         return newDishEntry;
     },
     makeImageEntry: function () {
         const newImageEntry = {
             source: foodImages[Math.floor(Math.random() * foodImages.length)],
-            caption: faker.lorem.sentence(word_count = 4),
+            caption: faker.lorem.sentence(word_count = 2),
             dish_id: Math.floor((Math.random() * 10) + 1)
         }
         return newImageEntry;

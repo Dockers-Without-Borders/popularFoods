@@ -10,13 +10,13 @@ var today = new Date();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////// CREATE RESTAURANT CSV /////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const writeRestaurants = fs.createWriteStream('/Users/gurjot/popularFoods/database/Postgres/restaurant.csv');
+const writeRestaurants = fs.createWriteStream('/Volumes/USB\ DISK/Postgres/restaurant.csv');
 // write headers
 writeRestaurants.write('id,name,\n', 'utf8')
 
 //drain + write script
 function writeTenMillionRestaurants(writer, encoding, callback) {
-    const i = 10000000; // set this to one mill for now
+    let i = 10000; // add 3 0's
     let id = 0;
     function write() {
       let ok = true;
@@ -55,13 +55,13 @@ function writeTenMillionRestaurants(writer, encoding, callback) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////// CREATE USER CSV /////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const writeUsers = fs.createWriteStream('/Users/gurjot/popularFoods/database/Postgres/users.csv');
+const writeUsers = fs.createWriteStream('/Volumes/USB\ DISK/Postgres/users.csv');
 // write headers
 writeUsers.write('name,avartar_url,friends_number,reviews_number\n', 'utf8')
 
 //drain + write script
 function writeTwentyMillionUsers(writer, encoding, callback) {
-    let i = 20000000;
+    let i = 20000;
     let id = 0;
     function write() {
       let ok = true;
@@ -102,13 +102,13 @@ function writeTwentyMillionUsers(writer, encoding, callback) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////// CREATE DISHES CSV /////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const writeDishes = fs.createWriteStream('/Users/gurjot/popularFoods/database/Postgres/dishes.csv');
+const writeDishes = fs.createWriteStream('/Volumes/USB\ DISK/Postgres/dishes.csv');
 // write headers
 writeDishes.write('name,price,restaurant_id,photo_number,review_number\n', 'utf8')
 
 //drain + write script
 function writeFiftyMillionDishes(writer, encoding, callback) {
-    let i = 50000000;
+    let i = 50000;
     let id = 0;
     function write() {
       let ok = true;
@@ -150,24 +150,24 @@ function writeFiftyMillionDishes(writer, encoding, callback) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////// CREATE REVIEWS CSV /////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const writeReviews = fs.createWriteStream('/Users/gurjot/popularFoods/database/Postgres/reviews.csv');
+const writeReviews = fs.createWriteStream('/Volumes/USB\ DISK/Postgres/reviews.csv');
 // write headers
-writeReviews.write('body,stars,user_id,dish_id,created_at,helpful,not_helpful\n', 'utf8')
+writeReviews.write('body,stars,user_id,dish_id,created_at\n', 'utf8')
 
 //drain + write script
 function writeHundredMillionReviews(writer, encoding, callback) {
-    let i = 100000000;
+    let i = 100000;
     let id = 0;
     function write() {
       let ok = true;
       do {
         i -= 1;
         id += 1;
-        const { body, stars, created_at,helpful,not_helpful} = makeReviewEntry();
+        const { body, stars, created_at} = makeReviewEntry();
         // since 2 user and 10 reviews per restaurant. each user must have 5 reviews
         const user_id = Math.ceil(id/5)
         const dish_id = Math.ceil(id/2) //two reviews per dish
-        const data = `${body},${stars},${user_id},${dish_id},${created_at},${helpful},${not_helpful}\n`;
+        const data = `${body},${stars},${user_id},${dish_id},${created_at}\n`;
 
         //Keep track using
         if (i%100000 === 0) {
@@ -201,13 +201,13 @@ function writeHundredMillionReviews(writer, encoding, callback) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////// CREATE IMAGES CSV /////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const writeImages = fs.createWriteStream('/Users/gurjot/popularFoods/database/Postgres/images.csv');
+const writeImages = fs.createWriteStream('/Volumes/USB\ DISK/Postgres/images.csv');
 // write headers
 writeImages.write('source,caption,dish_id\n', 'utf8')
 
 //drain + write script
 function writeHundredMillionImages(writer, encoding, callback) {
-    let i = 100000000; //set this to 10 million for now instead of 100
+    let i = 100000; //set this to 10 million for now instead of 100
     let id = 0;
     function write() {
       let ok = true;
@@ -252,11 +252,11 @@ function writeHundredMillionImages(writer, encoding, callback) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////Seed to Database ////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let queryStringRestaurant = `COPY restaurants(name) FROM '/Users/gurjot/popularFoods/database/Postgres/restaurant.csv' DELIMITER ',' CSV HEADER;`
-let queryStringUsers = `COPY users (name, avatar_url, friends_number, reviews_number) FROM '/Users/gurjot/popularFoods/database/Postgres/users.csv' DELIMITER ',' CSV HEADER;`
-let queryStringDishes = `COPY dishes (name, price, restaurant_id, photo_number, review_number) FROM '/Users/gurjot/popularFoods/database/Postgres/dishes.csv' DELIMITER ',' CSV HEADER;`
-let queryStringReviews = `COPY reviews (body, stars, user_id, dish_id, created_at, helpful, not_helpful) FROM '/Users/gurjot/popularFoods/database/Postgres/reviews.csv' DELIMITER ',' CSV HEADER;`
-let queryStringImages = `COPY images (source, caption, dish_id) FROM '/Users/gurjot/popularFoods/database/Postgres/images.csv' DELIMITER ',' CSV HEADER;`
+let queryStringRestaurant = `COPY restaurants(name) FROM '/Volumes/USB\ DISK/Postgres/restaurant.csv' DELIMITER ',' CSV HEADER;`
+let queryStringUsers = `COPY users (name, avatar_url, friends_number, reviews_number) FROM '/Volumes/USB\ DISK/Postgres/users.csv' DELIMITER ',' CSV HEADER;`
+let queryStringDishes = `COPY dishes (name, price, restaurant_id, photo_number, review_number) FROM '/Volumes/USB\ DISK/Postgres/dishes.csv' DELIMITER ',' CSV HEADER;`
+let queryStringReviews = `COPY reviews (body, stars, user_id, dish_id, created_at) FROM '/Volumes/USB\ DISK/Postgres/reviews.csv' DELIMITER ',' CSV HEADER;`
+let queryStringImages = `COPY images (source, caption, dish_id) FROM '/Volumes/USB\ DISK/Postgres/images.csv' DELIMITER ',' CSV HEADER;`
 
 var pool = new Pool({
     database: 'yelp',
