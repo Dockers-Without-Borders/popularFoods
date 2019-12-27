@@ -3,9 +3,15 @@ client/dist/bundle.js
 config.js
 coverage
 
-
+# CSV files -- these will be generated when seed script is run
 database/Postgres/restaurants.csv
 database/Postgres/users.csv
 database/Postgres/reviews.csv
 database/Postgres/images.csv
 database/Postgres/dishes.csv
+
+database/Cassandra/carousel.csv
+database/Cassandra/modal.csv
+
+# bogus file for me to see the outputs of the faker library
+database/SampleData/fakerTest.js
