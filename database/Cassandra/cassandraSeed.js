@@ -30,9 +30,6 @@ function createCSV(carouselWriter, modalWriter, encoding, carouselCallback, moda
           dish = makeDishEntry();
 
         }
-        // the carousel only needs one img for the thumbnail so only write into carousel if its divisible by 2
-        // where as write into the modal every time, and these need to be done together because this is how the 
-        // carousel will know which modal goes with it, assuming we have enough unique resturant names and dishes
 
          //Keep track of how much csv has been written, logs every 10,000 entries
          if (i%10000 === 0) {
@@ -54,20 +51,16 @@ function createCSV(carouselWriter, modalWriter, encoding, carouselCallback, moda
         const images_url = image.source
         const username = user.name
         const user_friends_number = user.friends_number
-        const user_reviews_number = user.reviews_number
+        const user_reviews_number = user.reviews_number // this is difficult to achieve acurrately, I'd have to keep a cache of which user put in how many comments
+        // not just randomize it the way i have
         const user_avatar_url = user.avatar_url
         const dish_caption = image.caption
         const review_text = review.body
         const review_stars = review.stars
         const created_at = review.created_at
-        // technically this should be 5 but since I am ramdomizing it it will be hard to keep track of
-        // i would have to increment this as i am making it, but also somehow limit it to 5 so the same name doesnt randomly show up
-        // more or less than 5 times. it might almost make more sense to have a whole new data generator for cassandra
 
         const carouselData = `${restaurant_name},${dish_name},${number_of_photos},${number_of_reviews},${price},${thumbnail_image}\n`;
         const modalData = `${restaurant_name},${images_url},${username},${user_friends_number},${user_reviews_number},${user_avatar_url},${dish_name},${dish_caption},${review_stars},${review_text},${created_at}\n`;
-
-        // IF THIS DOESNT MAKE SENSE THEN I CAN BREAK IT UP INTO TWO DIFFERENT CONDITIONAL STATEMENTS
 
         if (i === 0) { // write last entry and quit
           carouselWriter.write(carouselData, encoding, carouselCallback); // ends up with one extra extry
@@ -81,7 +74,7 @@ function createCSV(carouselWriter, modalWriter, encoding, carouselCallback, moda
         } else {
           // write to csv, and check where we are on the highwater mark for both
           if ((i-1)%2===0) {
-            ok_carousel = carouselWriter.write(carouselData, encoding); // only need the first img url for thumbnail, not both
+            ok_carousel = carouselWriter.write(carouselData, encoding); // only need the first img url for thumbnail, not both. so carosel table should be half of modal in terms of rows
           }
           ok_modal = modalWriter.write(modalData, encoding);
         }
@@ -89,19 +82,14 @@ function createCSV(carouselWriter, modalWriter, encoding, carouselCallback, moda
 
       if (i > 0) { 
 
-  // drain event is fired when it is okay to start pumping in data again, I wonder if the drain event is like a green light
-  // so i could use it like a conditional
-  // if I run it, will it work or will it only be available when the high water mark is reached. 
-  // no the drain event only goes off once, and only if the high water
-
           if (!ok_modal && !ok_carousel) {
-            // I need to check and make sure the drain event of both happens, caoursel should always happen first?
-            // i assume becasue its less data so easier to drain. however, what if the event goes off and I was not listening
+            // If the drain event of modal went off before carousel, would this code break? becuase my code was not even listening for it
+            // Not sure if that is possible, but I have set it up so it listens to carousel first, which should drain faster being a smaller table
             const drainModal = () => {
               modalWriter.once('drain',write)
             }
-            
             carouselWriter.once('drain', drainmModal)
+
           } else if (!ok_carousel) {
             carouselWriter.once('drain',write)
           } else {
@@ -113,19 +101,13 @@ function createCSV(carouselWriter, modalWriter, encoding, carouselCallback, moda
   write()
   }
 
-  const cb1 = () => {
+  const endCarousel = () => {
     writeCarousel.end();
   }
-  const cb2 = () => {
+  const endModal = () => {
     writeModal.end();
   }
-  createCSV(writeCarousel, writeModal, 'utf-8', cb1, cb2);
-
-// test if this will run 100 listings of both. YES
-// then test if it works when highwater mark is reach. YES
-// then split the firs up into 50 mil as it should be and second table into 100 mil as it should be YES
-// Create another copy script for the modal table
-// also another room for improvement with the data is to make users url smaller? its only 20 mill though, might still help thoug
+  createCSV(writeCarousel, writeModal, 'utf-8', endCarousel, endModal);
 
 
 

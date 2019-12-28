@@ -56,6 +56,7 @@ module.exports = {
             userGender = 'men';
         }
         const newUserEntry = {
+            // also another room for improvement with the data is to make users url smaller? its only 20 mill though, might still help thoug
             name: `${faker.name.firstName()} ${faker.name.lastName()}`,
             avatar_url: `https://randomuser.me/api/portraits/thumb/${userGender}/${userNumber}.jpg`,
             friends_number: Math.floor(Math.random() * 101),
