@@ -23,6 +23,10 @@ const foodImages = [
     "fixedw_large_4x.jpg"
 ]
 
+//created new s3 bucket for more photos with easier endpoints
+// sample: https://yelppopulardishes.s3-us-west-1.amazonaws.com/1.jpg
+// for storage, all we need to save is a number
+
 // food Images template
 // "https://food-photos-yelp.s3-us-west-1.amazonaws.com/{add end point here}
 
@@ -65,7 +69,7 @@ module.exports = {
             stars: Math.floor((Math.random() * 5) + 1),
             user_id: Math.floor((Math.random() * 50) + 1),
             dish_id: Math.floor((Math.random() * 10) + 1),
-            created_at: faker.date.between('2000-01-01', '2019-12-31'), // this is good but i may have to save it as a string
+            created_at: faker.date.between('2000-01-01', '2019-12-31'), // saved as a string data type becasue shape didnt match that of the db
             // helpful: Math.floor(Math.random()*20), // not enough space on mac
             // not_helpful: Math.floor(Math.random()*8)
         }
@@ -77,14 +81,16 @@ module.exports = {
             name: name,
             price: (Math.floor((Math.floor(Math.random() * 40 + 7) + Math.random()) * 100)) / 100 ,
             restaurant_id: Math.floor(Math.random() * 100 + 1),
-            photo_number: Math.floor(Math.random() * 5 + 2), 
-            review_number: Math.floor(Math.random() * 50)
+            photo_number: 2, // limiting it so 10 mil data points dont get out of hand
+            review_number: 2 // limited number of reviews as well
+            // photo_number: Math.floor(Math.random() * 5 + 2), 
+            // review_number: Math.floor(Math.random() * 50)
         }
         return newDishEntry;
     },
     makeImageEntry: function () {
         const newImageEntry = {
-            source: foodImages[Math.floor(Math.random() * foodImages.length)],
+            source: Math.floor(Math.random() * 101), // this assumes there are 100 scraped images in the buckets
             caption: faker.lorem.sentence(word_count = 2),
             dish_id: Math.floor((Math.random() * 10) + 1)
         }

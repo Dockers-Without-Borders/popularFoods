@@ -28,18 +28,12 @@ CREATE TABLE popular_dish.carousel (
     price DECIMAL,
     thumbnail_image VARCHAR,
     dish_name VARCHAR,
-    PRIMARY KEY (restaurant_name, dish_name)
--- only using one cluter here becasue there is only one dishpicture I need...
+    PRIMARY KEY (restaurant_name, dish_name, thumbnail_image)
 );
+-- the img url here as well becasue not enough unique entries, so infomartion was being over written
+-- currently its 98/100 
 
 CREATE TABLE popular_dish.modal (
-    -- partition over restaurant, or I can have a reference key that restaurant
-    -- can I have two clustering keys
-    -- cluter by dishname
-    -- cluster by one other thing so they dont overwrite
-    -- want to have two clusters here becuase there will be multiple dishes with the same name
-    -- inside of the partition. also it clusters dishes because then we dont have to iterate over
-    -- over all of the dishes in the restaurant
     restaurant_name VARCHAR,
     images_url VARCHAR,
     username VARCHAR,
@@ -50,6 +44,13 @@ CREATE TABLE popular_dish.modal (
     dish_caption VARCHAR,
     review_stars INT,
     review_text VARCHAR,
-    created_at TIME,
+    created_at VARCHAR,
     PRIMARY KEY (restaurant_name, dish_name, images_url)
 );
+    -- partition over restaurant, or I can have a reference key that restaurant
+    -- can I have two clustering keys
+    -- cluter by dishname
+    -- cluster by one other thing so they dont overwrite
+    -- want to have two clusters here becuase there will be multiple dishes with the same name
+    -- inside of the partition. also it clusters dishes because then we dont have to iterate over
+    -- over all of the dishes in the restaurant
