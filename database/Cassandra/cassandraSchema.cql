@@ -19,21 +19,21 @@ CREATE KEYSPACE IF NOT EXISTS   popular_dish
 
 use popular_dish;
 
-
+-- Give UUID to not have the issue at all
 
 CREATE TABLE popular_dish.carousel (
+    id INT,
     restaurant_name VARCHAR,
     number_of_photos INT,
     number_of_reviews INT,
     price DECIMAL,
     thumbnail_image VARCHAR,
     dish_name VARCHAR,
-    PRIMARY KEY (restaurant_name, dish_name, thumbnail_image)
+    PRIMARY KEY (restaurant_name, dish_name, id)
 );
--- the img url here as well becasue not enough unique entries, so infomartion was being over written
--- currently its 98/100 
 
 CREATE TABLE popular_dish.modal (
+    id INT,
     restaurant_name VARCHAR,
     images_url VARCHAR,
     username VARCHAR,
@@ -45,7 +45,7 @@ CREATE TABLE popular_dish.modal (
     review_stars INT,
     review_text VARCHAR,
     created_at VARCHAR,
-    PRIMARY KEY (restaurant_name, dish_name, images_url)
+    PRIMARY KEY (restaurant_name, dish_name, id)
 );
     -- partition over restaurant, or I can have a reference key that restaurant
     -- can I have two clustering keys

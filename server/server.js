@@ -7,7 +7,7 @@ const port = 3002;
 const router = require("./routes/routes");
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, "/client/public")));
+app.use(express.static(path.join(__dirname, "../client/public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

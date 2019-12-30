@@ -16,7 +16,7 @@ writeRestaurants.write('id,name,\n', 'utf8')
 
 //drain + write script
 function writeTenMillionRestaurants(writer, encoding, callback) {
-    let i = 10000; // add 3 0's
+    let i = 10000000; // add 3 0's
     let id = 0;
     function write() {
       let ok = true;
@@ -61,7 +61,7 @@ writeUsers.write('name,avartar_url,friends_number,reviews_number\n', 'utf8')
 
 //drain + write script
 function writeTwentyMillionUsers(writer, encoding, callback) {
-    let i = 20000;
+    let i = 20000000;
     let id = 0;
     function write() {
       let ok = true;
@@ -108,7 +108,7 @@ writeDishes.write('name,price,restaurant_id,photo_number,review_number\n', 'utf8
 
 //drain + write script
 function writeFiftyMillionDishes(writer, encoding, callback) {
-    let i = 50000;
+    let i = 50000000;
     let id = 0;
     function write() {
       let ok = true;
@@ -156,7 +156,7 @@ writeReviews.write('body,stars,user_id,dish_id,created_at\n', 'utf8')
 
 //drain + write script
 function writeHundredMillionReviews(writer, encoding, callback) {
-    let i = 100000;
+    let i = 100000000;
     let id = 0;
     function write() {
       let ok = true;
@@ -207,7 +207,7 @@ writeImages.write('source,caption,dish_id\n', 'utf8')
 
 //drain + write script
 function writeHundredMillionImages(writer, encoding, callback) {
-    let i = 100000; //set this to 10 million for now instead of 100
+    let i = 100000000; //set this to 10 million for now instead of 100
     let id = 0;
     function write() {
       let ok = true;

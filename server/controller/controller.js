@@ -1,4 +1,5 @@
-const { Users, Restaurants, Reviews, Images, Dishes } = require('../database/database');
+const { Users, Restaurants, Reviews, Images, Dishes } = require('../../database/database');
+// new controller should connect to the model now instead of the database
 
 module.exports = {
     dish: {
