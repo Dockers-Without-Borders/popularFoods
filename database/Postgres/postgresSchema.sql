@@ -57,4 +57,8 @@ CREATE TABLE images (
     FOREIGN KEY (dish_id) REFERENCES dishes (id)
 );
 
+-- add schema for indexing
+-- it may help to optimize it even more if I use multi column indexing, currently only indexing one column
+-- also look into increated the memory on shared buffers for postgres, this may optimize it even more
+
 

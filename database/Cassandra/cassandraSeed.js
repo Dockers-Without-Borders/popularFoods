@@ -14,7 +14,7 @@ writeModal.write('id,restaurant_name,images_url,username,user_friends_number,use
 
 //drain + write script
 function createCSV(carouselWriter, modalWriter, encoding, carouselCallback, modalCallback) {
-    var i = 100; // this will need to iterate to a 100,000,000
+    var i = 100000000; // this will need to iterate to a 100,000,000
     var id = 0;
     var restaurant, dish;
     function write() {
@@ -60,18 +60,21 @@ function createCSV(carouselWriter, modalWriter, encoding, carouselCallback, moda
         const review_stars = review.stars
         const created_at = review.created_at
 
-        const carouselData = `${id},${restaurant_name},${dish_name},${number_of_photos},${number_of_reviews},${price},${thumbnail_image}\n`;
+        const carouselData = `${Math.ceil(id/2)},${restaurant_name},${dish_name},${number_of_photos},${number_of_reviews},${price},${thumbnail_image}\n`;
         const modalData = `${id},${restaurant_name},${images_url},${username},${user_friends_number},${user_reviews_number},${user_avatar_url},${dish_name},${dish_caption},${review_stars},${review_text},${created_at}\n`;
 
         if (i === 0) { // write last entry and quit
-          carouselWriter.write(carouselData, encoding, carouselCallback); // ends up with one extra extry
+          // can automate the whole script by running shell commands here refer to this article
+          // https://stackabuse.com/executing-shell-commands-with-node-js/
+          // don't need to write the last entry for caoursel since it is not an even one, it is extra so just end the stream
+          carouselCallback();
           modalWriter.write(modalData, encoding, modalCallback);
           console.log('TIME TO CREATE BOTH CSV in seconds', (new Date()-now)/1000)
           console.log('Run the following commands in the cqlsh to seed to cassandra once csvs are made');
           console.log('Step 1: import scehma, Step 2: copy over csv files')
           console.log(`source './cassandraSchema.cql';`); // this can look slightly different if one needs to sign in to cqlsh
-          console.log(`COPY popular_dish.carousel (restaurant_name, dish_name, number_of_photos, number_of_reviews, price, thumbnail_image) FROM '/Volumes/USB DISK/Cassandra/carousel.csv' WITH DELIMITER=',' AND HEADER=TRUE;`)
-          console.log(`COPY popular_dish.modal (restaurant_name, images_url, username, user_friends_number, user_reviews_number, user_avatar_url, dish_name, dish_caption, review_stars, review_text, created_at) FROM '/Volumes/USB DISK/Cassandra/modal.csv' WITH DELIMITER=',' AND HEADER=TRUE;`)
+          console.log(`COPY popular_dish.carousel (id, restaurant_name, dish_name, number_of_photos, number_of_reviews, price, thumbnail_image) FROM '/Volumes/USB DISK/Cassandra/carousel.csv' WITH DELIMITER=',' AND HEADER=TRUE;`)
+          console.log(`COPY popular_dish.modal (id, restaurant_name, images_url, username, user_friends_number, user_reviews_number, user_avatar_url, dish_name, dish_caption, review_stars, review_text, created_at) FROM '/Volumes/USB DISK/Cassandra/modal.csv' WITH DELIMITER=',' AND HEADER=TRUE;`)
         } else {
           // write to csv, and check where we are on the highwater mark for both
           if ((i-1)%2===0) {
@@ -113,7 +116,6 @@ function createCSV(carouselWriter, modalWriter, encoding, carouselCallback, moda
 
 
 
-// re seed
 // find a way to write tests that will test the last 10% of cassandra
 // tmrw at school download the benchmark software since it has a 14 day trail
 

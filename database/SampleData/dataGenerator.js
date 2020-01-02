@@ -57,20 +57,24 @@ module.exports = {
         }
         const newUserEntry = {
             // also another room for improvement with the data is to make users url smaller? its only 20 mill though, might still help thoug
+            // this will help becasue for cassandra this is actually 100 mil entries
+            // include endpoint only, the origin will be https://randomuser.me/api/portraits/thumb
             name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-            avatar_url: `https://randomuser.me/api/portraits/thumb/${userGender}/${userNumber}.jpg`,
+            avatar_url: `/${userGender}/${userNumber}.jpg`,
             friends_number: Math.floor(Math.random() * 101),
             reviews_number: Math.floor(Math.random() * 101)
         }
         return newUserEntry;
     },
     makeReviewEntry: function () {
+        let time = faker.date.between('2000-01-01', '2019-12-31');
+        time = time.toString().slice(0,24) // sliced off extra zone information
         const newReviewEntry = {
             body: faker.lorem.words(), // shortened from paragraph to words
             stars: Math.floor((Math.random() * 5) + 1),
             user_id: Math.floor((Math.random() * 50) + 1),
             dish_id: Math.floor((Math.random() * 10) + 1),
-            created_at: faker.date.between('2000-01-01', '2019-12-31'), // saved as a string data type becasue shape didnt match that of the db
+            created_at: time, // saved as a string data type becasue shape didnt match that of the db
             // helpful: Math.floor(Math.random()*20), // not enough space on mac
             // not_helpful: Math.floor(Math.random()*8)
         }
