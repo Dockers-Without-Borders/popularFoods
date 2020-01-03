@@ -50,6 +50,15 @@ class Carousel extends Component {
     // accusantium tenetur at
     // vel quia a
 
+    // Refactor this code temporarily for the stress TEST. 
+    // create a branch.
+    // It should only make one, request, instead of two as it is right now on page load
+    // and the it needs to test the stress load for the modal as well
+    // to achieve that I would jsut have to change this code to go to the modal endpoint, but
+    // does that endpoint need restaurant name and dish name?? what if it doesnt match up
+    // also why a i getting error codes? also whats code 1, or 3000...maybe my server isnt responding with a code if not found
+    // do i need to reseed???
+
     var endpoint = window.location.pathname;
     // if the input in nothing then default to /vel_animi_tempora/
     if ( window.location.pathname === '/') {

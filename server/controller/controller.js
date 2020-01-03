@@ -3,6 +3,7 @@ const { Users, Restaurants, Reviews, Images, Dishes } = require('../../database/
 const { client, pool } = require('../../database/model');
 const { Promise } = require('bluebird');
 pool.query = Promise.promisify(pool.query);
+const { makeRestaurantEntry } = require('../../database/SampleData/dataGenerator')
 
 // THIS SHOULD REFLECT THE READ ME FILE
 
@@ -110,7 +111,10 @@ module.exports = {
             // maybe try parsing through body?
             // console.log('THIS REQUEST WAS MADE', req.params.restaurant_name)
             var endpoint = req.params.restaurant_name.split("_").join(" ")
+            // going to random the endpoint based on the faker data
+            endpoint = makeRestaurantEntry().name // makes the name of the restaurant
             console.log('ENDPOINTT', endpoint)
+            
             var query = `select * from carousel where restaurant_name = '${endpoint}';`
             var now = new Date();
             client.execute(query)
