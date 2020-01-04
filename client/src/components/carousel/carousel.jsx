@@ -60,7 +60,7 @@ class Carousel extends Component {
       endpoint = '/vel_animi_tempora/'
     }
 
-    var response = await fetch(`http://localhost:3002/api/carousel${endpoint}`)
+    var response = await fetch(`/api/carousel${endpoint}`)
     // call modal here as well to test it
 
     // const response = await fetch("http://localhost:3002/api/dishes");
