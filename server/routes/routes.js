@@ -13,9 +13,10 @@ router.get('/tests/review', controller.reviews.getOne)
 
 //RETRIEVE
 router.get('/carousel', controller.cassandra.getCarousel)
-// this just calls a function, I need to pass in parameters? how else can I give params
 router.get('/carousel/:restaurant_name', controller.cassandra.getCarousel)
 
+router.get('/modal', controller.cassandra.getModal)
+router.get('/modal/:restaurant_name', controller.cassandra.getModal)
 
 //UPDATE
 
