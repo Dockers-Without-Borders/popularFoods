@@ -60,9 +60,9 @@ class Carousel extends Component {
       endpoint = '/vel_animi_tempora/'
     }
 
-    await fetch(`http://localhost:3002/api/carousel${endpoint}`)
+    const response = await fetch(`http://34.216.9.223:3002/api/carousel${endpoint}`)
 
-    const response = await fetch("http://localhost:3002/api/dishes");
+    // const response = await fetch("http://localhost:3002/api/dishes");
     const data = await response.json();
 
     console.log('DATA IN MAIN CAROUSEL', data)
