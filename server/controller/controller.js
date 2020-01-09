@@ -1,6 +1,7 @@
 const { client, pool } = require('../../database/model');
 const { Promise } = require('bluebird');
 pool.query = Promise.promisify(pool.query);
+const { makeRestaurantEntry } = require('../../database/SampleData/dataGenerator')
 
 // THIS SHOULD REFLECT THE READ ME FILE
 
@@ -103,19 +104,15 @@ module.exports = {
 
     cassandra: {
         getCarousel: function(req, res){
-            // This needs to send it back as well
-            // NEED TO see if this gets the right end point that I will put in
-            // maybe try parsing through body?
-            // console.log('THIS REQUEST WAS MADE', req.params.restaurant_name)
-            var endpoint = req.params.restaurant_name.split("_").join(" ")
+            // HARD CODING the endpoint for testing purposes, want to avoid getting cache items when testing speeds
+            var endpoint = makeRestaurantEntry().name
+
             console.log('ENDPOINTT', endpoint)
             var query = `select * from carousel where restaurant_name = '${endpoint}';`
             var now = new Date();
             client.execute(query)
                 .then((data) => {
                     console.log('TIME IT TOOK THIS MUCH TIME IN milliseconds: ', new Date() - now, data.rows)
-                    //sending something back so it doesnt break. not sure how i did this without express even in here
-                    // also how am i getting a req and res ?? like from where
                     res.send();
             });
         }
