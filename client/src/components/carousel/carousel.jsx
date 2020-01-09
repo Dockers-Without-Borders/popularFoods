@@ -33,7 +33,7 @@ class Carousel extends Component {
   async componentDidMount() {
     // we want this to not make a generic request
     // now this will make custom requests to the carousel, at the current restaurant for all the dishes?
-    console.log('NOW when the page loads I get this url regardless of input',window.location.pathname === '/')
+    console.log('NOW when the page loads I get this url regardless of input',window.location.pathname)
     // just try calling it generally first, then customize it to go based on the names inputted
     // it will have to split the string and join using spaces
 
@@ -49,6 +49,10 @@ class Carousel extends Component {
     // occaecati sunt aut
     // accusantium tenetur at
     // vel quia a
+
+    // NOT REALLY USING THE CLIENT SIDE TO TEST THE SERVER SIDE
+    // I might have to reroute these to the seed node database
+    // this will be important when I tie in the proxy. but I could test the server for this with this just being local host
 
     var endpoint = window.location.pathname;
     // if the input in nothing then default to /vel_animi_tempora/

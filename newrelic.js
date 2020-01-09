@@ -1,5 +1,5 @@
 'use strict'
-const { key } = require('./newrelic.congif')
+var { key } = require('./newrelic.config')
 /**
  * New Relic agent configuration.
  *
