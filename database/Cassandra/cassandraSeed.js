@@ -6,16 +6,22 @@ var now = new Date();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////// CREATE CSV ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const writeCarousel = fs.createWriteStream('/Volumes/USB DISK/Cassandra/carousel.csv');
-const writeModal = fs.createWriteStream('/Volumes/USB DISK/Cassandra/modal.csv');
+const writeCarousel = fs.createWriteStream('/Users/gurjot/popularFoods/database/Cassandra/carousel.csv');
+const writeModal = fs.createWriteStream('/Users/gurjot/popularFoods/database/Cassandra/modal.csv');
 // write headers
 writeCarousel.write('id,restaurant_name,dish_name,number_of_photos,number_of_reviews,price,thumbnail_image\n', 'utf8')
 writeModal.write('id,restaurant_name,images_url,username,user_friends_number,user_reviews_number,user_avatar_url,dish_name,dish_caption,review_stars,review_text,created_at\n', 'utf8')
 
 //drain + write script
 function createCSV(carouselWriter, modalWriter, encoding, carouselCallback, modalCallback) {
-    var i = 100000000; // this will need to iterate to a 100,000,000
-    var id = 0;
+    var i = 70000000; // this will need to iterate to a 100,000,000
+    //seeding 10 mil at a time for modal, and 5 mil for caoursel
+    // so now my ids need to start from
+    // 10 mil
+    // 20 mil
+    // 30 mil and go to 100 mil, so run 70 mil iterations
+
+    var id = 30000000;
     var restaurant, dish;
     function write() {
       let ok_carousel = true;
@@ -73,8 +79,8 @@ function createCSV(carouselWriter, modalWriter, encoding, carouselCallback, moda
           console.log('Run the following commands in the cqlsh to seed to cassandra once csvs are made');
           console.log('Step 1: import scehma, Step 2: copy over csv files')
           console.log(`source './cassandraSchema.cql';`); // this can look slightly different if one needs to sign in to cqlsh
-          console.log(`COPY popular_dish.carousel (id, restaurant_name, dish_name, number_of_photos, number_of_reviews, price, thumbnail_image) FROM '/Volumes/USB DISK/Cassandra/carousel.csv' WITH DELIMITER=',' AND HEADER=TRUE;`)
-          console.log(`COPY popular_dish.modal (id, restaurant_name, images_url, username, user_friends_number, user_reviews_number, user_avatar_url, dish_name, dish_caption, review_stars, review_text, created_at) FROM '/Volumes/USB DISK/Cassandra/modal.csv' WITH DELIMITER=',' AND HEADER=TRUE;`)
+          console.log(`COPY popular_dish.carousel (id, restaurant_name, dish_name, number_of_photos, number_of_reviews, price, thumbnail_image) FROM '/Users/gurjot/popularFoods/database/Cassandra/carousel.csv' WITH DELIMITER=',' AND HEADER=TRUE;`)
+          console.log(`COPY popular_dish.modal (id, restaurant_name, images_url, username, user_friends_number, user_reviews_number, user_avatar_url, dish_name, dish_caption, review_stars, review_text, created_at) FROM '/Users/gurjot/popularFoods/database/Cassandra/modal.csv' WITH DELIMITER=',' AND HEADER=TRUE;`)
         } else {
           // write to csv, and check where we are on the highwater mark for both
           if ((i-1)%2===0) {
@@ -112,10 +118,3 @@ function createCSV(carouselWriter, modalWriter, encoding, carouselCallback, moda
     writeModal.end();
   }
   createCSV(writeCarousel, writeModal, 'utf-8', endCarousel, endModal);
-
-
-
-
-// find a way to write tests that will test the last 10% of cassandra
-// tmrw at school download the benchmark software since it has a 14 day trail
-
